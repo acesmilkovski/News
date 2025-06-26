@@ -1,0 +1,17 @@
+.banner {
+    background-image: url('Banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+body {
+    background-image: url('usa-1777986_1280.jpg');
+    background-size: cover;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
