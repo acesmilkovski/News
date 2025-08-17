@@ -19,7 +19,7 @@ async function ace(){
                     img.setAttribute("width", "100");
                     img.setAttribute("class", "card-img-top");
                     img.setAttribute("alt", "News Image");
-                    col.appendChild(img);
+                    card.appendChild(img);
                     const cardBody = document.createElement("div");
                     cardBody.setAttribute("class", "card-body");
                     const title = document.createTextNode(result.title);
@@ -27,10 +27,40 @@ async function ace(){
                     h1.setAttribute("class", "card-title");
                     h1.appendChild(title);
                     cardBody.appendChild(h1);
-                    const description = document.createTextNode(result.description);
+                    const description = result.description;
+                    let descriptionWhole;
+                    let description1;
+                    let description2 = "";
+                    if(description.length > 50){
+                        description1 = document.createTextNode(description.substring(0, 50));
+                        description2 = document.createTextNode(description.substring(50));
+                        const firstPart = document.createElement("span");
+                        firstPart.setAttribute("class", "first-part");
+                        firstPart.appendChild(description1);
+                        const secondPart = document.createElement("div");
+                        secondPart.setAttribute("class", "second-part");
+                        secondPart.appendChild(description2);
+                        secondPart.setAttribute("class", "collapse");
+                        secondPart.setAttribute("id", `description-${i + j}`);
+                        const readMore = document.createElement("button");
+                        readMore.setAttribute("class", "btn btn-success read-more");
+                        readMore.textContent = "Повеќе";
+                        readMore.setAttribute("type", "button");
+                        readMore.setAttribute("data-bs-toggle", "collapse");
+                        readMore.setAttribute("data-bs-target", `#description-${i + j}`);
+                        readMore.setAttribute("aria-expanded", "false");
+                        readMore.setAttribute("aria-controls", `description-${i + j}`);
+                        descriptionWhole = document.createElement("div");
+                        descriptionWhole.appendChild(firstPart);
+                        descriptionWhole.appendChild(secondPart);
+                        descriptionWhole.appendChild(readMore);
+                    }else{
+                        description1 = document.createTextNode(description);
+                        descriptionWhole = document.createTextNode(description1);
+                    }
                     const p = document.createElement("p");
                     p.setAttribute("class", "card-text");
-                    p.appendChild(description);
+                    p.appendChild(descriptionWhole);
                     cardBody.appendChild(p);
                     card.appendChild(cardBody);
                     col.appendChild(card);
