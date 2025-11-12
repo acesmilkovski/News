@@ -1,6 +1,6 @@
 async function ace(){
         const response =  await fetch("https://newsdata.io/api/1/news?apikey=pub_670829fde235f39feb00253ef8a5619e29b6e&country=mk&language=mk");
-        const body = document.getElementsByTagName("body")[0];
+        const body = document.getElementsByTagName("main")[0];
         let out = response.json().then(value=>{
             const container = document.createElement("div");
             container.setAttribute("class", "container text-center");
